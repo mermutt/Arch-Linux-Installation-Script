@@ -4,20 +4,20 @@
 # CONFIGURATION VAR
 ##########################################################################################################
 
-LOCALE="de_DE.UTF-8"
-MIRROR="Germany"
-LANG="de_DE.UTF-8"
-KEYMAP="de-latin1"
-LOCALTIME="/usr/share/zoneinfo/Europe/Berlin"
+LOCALE="ru_RU.UTF-8"
+MIRROR="United States"
+LANG="ru_RU.UTF-8"
+KEYMAP="ru"
+LOCALTIME="/usr/share/zoneinfo/America/Chicago"
 INSTALL_PATH="/mnt/install"
 PARTLABEL_BOOT="boot"
 PARTLABEL_ROOT="root"
 LABEL_ARCH="arch"
 CRYPT_DEV_LABEL="system"
-HOSTNAME="archlinux"
-USERNAME="arch"
-HARDENED=1
-PROPRIETARY_VIDEO_DRIVER=0
+HOSTNAME="stable"
+USERNAME="yury"
+HARDENED=0
+PROPRIETARY_VIDEO_DRIVER=1
 SSH_SERVER=0
 LUKS_PBKDF_ITERATIONS=500000
 LOGFILE="/install_error.log"
@@ -29,7 +29,7 @@ LOGFILE="/install_error.log"
 # - When KEYSERVER var is an empty string, then we use the default keyserver.
 ##########################################################################################################
 
-KEYSERVER="pool.sks-keyservers.net"
+KEYSERVER=""
 
 
 ##########################################################################################################
@@ -588,11 +588,11 @@ EOF
     grub-install --efi-directory=/boot/efi --bootloader-id=arch
     grub-mkconfig -o /boot/grub/grub.cfg
 
-    # grub de language fix:
-    if [ "$LOCALE" = "de_DE.UTF-8" ]; then
-        if [ -f /usr/share/locale/de/LC_MESSAGES/grub.mo ]; then
+    # grub ru language fix:
+    if [ "$LOCALE" = "ru_RU.UTF-8" ]; then
+        if [ -f /usr/share/locale/ru/LC_MESSAGES/grub.mo ]; then
             mkdir -p /boot/grub/locale
-            cp -v /usr/share/locale/de/LC_MESSAGES/grub.mo /boot/grub/locale/de.gmo
+            cp -v /usr/share/locale/ru/LC_MESSAGES/grub.mo /boot/grub/locale/ru.gmo
         fi
     fi
     return 0
