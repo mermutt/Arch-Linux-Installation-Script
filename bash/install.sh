@@ -607,7 +607,7 @@ install_bootloader_grub_with_crypt_dev() {
     device_uuid="$1"; shift
     drive_passphrase="$1"; shift
     echo -e "\n${LBLUE} >> Install Bootloader Grub for encrypted device (chroot) ${NC}"
-    pacman --noconfirm --needed -S grub-btrfs efibootmgr mkinitcpio
+    pacman --noconfirm --needed -S grub-btrfs efibootmgr mkinitcpio inotify-tools
 
     if [ ! -e /dev/disk/by-uuid/${device_uuid} ]; then
         echo -e "${RED}WARNING: /dev/disk/by-uuid/${device_uuid} does not exists. Workaround we create the link now ${NC}"
@@ -696,7 +696,7 @@ install_bootloader_grub() {
         sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="/GRUB_CMDLINE_LINUX_DEFAULT="amd_iommu=on /g' /etc/default/grub
     fi
 
-    systemctl enable grub-btrfs.path
+    systemctl enable grub-btrfs.service
 
     mkinitcpio -P
     grub-install --efi-directory=/boot/efi --bootloader-id=arch
