@@ -634,7 +634,7 @@ install_bootloader_grub_with_crypt_dev() {
         sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT="/GRUB_CMDLINE_LINUX_DEFAULT="amd_iommu=on /g' /etc/default/grub
     fi
 
-    systemctl enable grub-btrfs.path
+    systemctl enable grub-btrfs.service
 
     mkinitcpio -P
     chmod 600 /boot/initramfs-linux*
@@ -683,7 +683,7 @@ EOF
 
 install_bootloader_grub() {
     echo -e "\n${LBLUE} >> Install Bootloader Grub (chroot) ${NC}"
-    pacman --noconfirm --needed -S grub-btrfs efibootmgr mkinitcpio
+    pacman --noconfirm --needed -S grub-btrfs efibootmgr mkinitcpio inotify-tools
 
     sed -i 's/GRUB_CMDLINE_LINUX=.*$/GRUB_CMDLINE_LINUX="rootflags=subvol='${BTRFS_SYS_SUBVOLUME}'"/' /etc/default/grub
     sed -i 's/loglevel=3 quiet/loglevel=3/g' /etc/default/grub
