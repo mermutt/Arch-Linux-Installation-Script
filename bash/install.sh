@@ -18,7 +18,7 @@ HOSTNAME="stable"
 USERNAME="yury"
 HARDENED=0
 ENCRYPT_DRIVE=1
-PROPRIETARY_VIDEO_DRIVER=0
+PROPRIETARY_VIDEO_DRIVER=1
 SSH_SERVER=0
 ADD_BLACK_ARCH_REPO=0
 REFRESH_PACMAN_KEYS=0
@@ -296,7 +296,7 @@ install_system() {
     echo -e "\n${LBLUE} >> Install System ${NC}"
     timedatectl set-ntp true
 
-    base_packages=( base base-devel linux-firmware btrfs-progs reflector sudo xdg-user-dirs nvme-cli rsync )
+    base_packages=( base base-devel linux-firmware btrfs-progs reflector sudo xdg-user-dirs nvme-cli rsync zsh )
 
     if [ $HARDENED != 0 ]; then
         echo -e "Install hardened Linux Kernel"
@@ -925,5 +925,5 @@ else # "init"
     view_install_log
 
     echo -ne "\n${GREEN}Press Enter to reboot ${NC} " && read any && unset any
-    reboot && exit 0
+    #reboot && exit 0
 fi
