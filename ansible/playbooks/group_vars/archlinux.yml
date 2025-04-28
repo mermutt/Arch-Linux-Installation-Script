@@ -1,6 +1,6 @@
-hostname: "archlinux"
-username: "arch"
-hardened_install: true
+hostname: "stable"
+username: "yury"
+hardened_install: false
 enable_ssh_server: true
 enable_apparmor: true
 ansible_remote_tmp: "/.ansible"

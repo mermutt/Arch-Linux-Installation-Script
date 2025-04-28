@@ -6,7 +6,7 @@ GREEN='\033[0;32m'
 NC='\033[0m'
 
 mount -o remount,size=2G /run/archiso/cowspace
-pacman -Sy --noconfirm --needed ansible python-pip
+pacman -Sy --noconfirm --needed ansible python-pip python-passlib
 ansible-galaxy install -r requirements.yml
 
 while true; do

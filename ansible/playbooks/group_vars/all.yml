@@ -1,8 +1,8 @@
-timezone: 'Europe/Berlin'
-locale: "de_DE.UTF-8"
-mirror: "Germany"
-lang: "de_DE.UTF-8"
-keymap: "de-latin1"
+timezone: 'America/Chicago'
+locale: "ru_RU.UTF-8"
+mirror: "United States"
+lang: "ru_RU.UTF-8"
+keymap: "ru"
 install_path: "/mnt/install"
 btrfs_label_root: "linux"
 part_label_boot: "boot"
